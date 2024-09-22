@@ -39,6 +39,12 @@ About = st.markdown(
         unsafe_allow_html=True
     )
 
+
+
+
+st.divider()
+
+
 indulge_df = pd.DataFrame(indulge, dtype=str)
 
 # Add a new row by appending a list with the date value and NaN for the rest
