@@ -4,7 +4,7 @@ from datetime import datetime
 import numpy as np
 
 # Get today's date and format it as YYYY-MM-DD
-today = datetime.today().strftime('%Y-%m-%d')
+today = datetime.today()
 
 #Bring in the Indulge Data
 indulge = pd.read_excel('C:/Users/Calvin/Documents/TrackerCS/Trackers/FoodIndulgentDB.xlsx',
@@ -25,6 +25,7 @@ title = st.markdown(
         unsafe_allow_html=True
     )
 
+#About
 About = st.markdown(
         f"""
         <h3 style="
@@ -41,20 +42,16 @@ About = st.markdown(
 
 
 
-
 st.divider()
 
 
-indulge_df = pd.DataFrame(indulge, dtype=str)
-
-# Add a new row by appending a list with the date value and NaN for the rest
-indulge_df.loc[len(indulge_df)] = [today, np.nan, np.nan, np.nan]
 
 
 
-st.data_editor(indulge_df,
-               disabled=['Date'],
-               hide_index=True)
+
+edited_indulge_df = st.data_editor(indulge_df,
+                                    disabled=['Date'],
+                                    hide_index=True)
 
 # Styling for Button
 st.markdown(""" 
@@ -62,13 +59,6 @@ st.markdown("""
                 .stButton {
                     display: flex;
                     justify-content: center;
-                }
-                    
-                .stButton button:first-child {
-                    background-color: Black;
-                    color: #e8b4b8";
-                    font-size: 20px;
-                    border-radius: 10px;
                 }
             </style>
             """, unsafe_allow_html=True
