@@ -94,7 +94,7 @@ indulge_df['Date'] = pd.to_datetime(indulge_df['Date']).dt.date
 col = st.columns([1,1,1])
 
 with col[1]:
-    edited_indulge_df = st.data_editor(indulge_df.iloc,
+    edited_indulge_df = st.data_editor(indulge_df,
                                     disabled=['Date'],
                                     hide_index=True,
                                     num_rows='dynamic',
