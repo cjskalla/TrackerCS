@@ -66,6 +66,8 @@ indulge = pd.read_excel('FoodIndulgentDB.xlsx',
 
 indulge['Date'] = pd.to_datetime(indulge['Date'])
 
+indulge['Date'] = pytz.utc.localize(indulge['Date']).astimezone(cst)
+
 # Get max date to assure to not duplicate today
 max_date = indulge['Date'].max()
 
