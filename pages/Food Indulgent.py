@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 import openpyxl
+import pytz
 
 st.set_page_config(layout="centered", page_title="Food Indulgence", page_icon=":cookie:")
 
@@ -43,8 +44,15 @@ st.divider()
 
 
 
-# Get today's date and format it as YYYY-MM-DD
-today = datetime.today()#.replace(hour=0, minute=0, second=0, microsecond=0)
+# Get today's date
+today_utc = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+
+# Define the CST timezone (CST is UTC-6 hours, but considering daylight saving time, it can be CST or CDT)
+cst = pytz.timezone('America/Chicago')
+
+# Convert from UTC to CST/CDT (handling daylight saving automatically)
+today = pytz.utc.localize(today_utc).astimezone(cst)
+
 
 #Bring in the Indulge Data
 indulge = pd.read_excel('FoodIndulgentDB.xlsx',
