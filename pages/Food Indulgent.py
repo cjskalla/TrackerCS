@@ -46,7 +46,7 @@ st.divider()
 today = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
 
 #Bring in the Indulge Data
-indulge = pd.read_excel('C:/Users/Calvin/Documents/TrackerCS/Trackers/FoodIndulgentDB.xlsx',
+indulge = pd.read_excel('FoodIndulgentDB.xlsx',
                         sheet_name='FoodIndulgent',
                         dtype = {
                             'Food Type' : 'str',
@@ -103,7 +103,7 @@ with col[1]:
     confirm = st.button("Confirm")
 
 if confirm:
-    edited_indulge_df.to_excel('C:/Users/Calvin/Documents/TrackerCS/Trackers/FoodIndulgentDB.xlsx',
+    edited_indulge_df.to_excel('FoodIndulgentDB.xlsx',
                         sheet_name='FoodIndulgent',
                         index=False)
     
