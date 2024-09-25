@@ -45,13 +45,13 @@ st.divider()
 
 
 # Get today's date
-today_utc = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+today_utc = datetime.today()
 
 # Define the CST timezone (CST is UTC-6 hours, but considering daylight saving time, it can be CST or CDT)
 cst = pytz.timezone('America/Chicago')
 
 # Convert from UTC to CST/CDT (handling daylight saving automatically)
-today = pytz.utc.localize(today_utc).astimezone(cst)
+today = pytz.utc.localize(today_utc).astimezone(cst).replace(hour=0, minute=0, second=0, microsecond=0)
 
 
 #Bring in the Indulge Data
