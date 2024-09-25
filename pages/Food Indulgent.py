@@ -76,7 +76,7 @@ else:
     indulge_df = indulge
 
 
-indulge_df['Date'] = pd.to_datetime(indulge_df['Date']).dt.date
+#indulge_df['Date'] = pd.to_datetime(indulge_df['Date']).dt.date
 
 
 
