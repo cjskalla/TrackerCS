@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import numpy as np
+import openpyxl
 
 st.set_page_config(layout="centered", page_title="Food Indulgence", page_icon=":cookie:")
 
