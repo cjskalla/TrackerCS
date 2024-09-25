@@ -44,7 +44,7 @@ st.divider()
 
 
 # Get today's date and format it as YYYY-MM-DD
-today = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+today = datetime.today()#.replace(hour=0, minute=0, second=0, microsecond=0)
 
 #Bring in the Indulge Data
 indulge = pd.read_excel('FoodIndulgentDB.xlsx',
