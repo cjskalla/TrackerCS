@@ -66,7 +66,7 @@ indulge = pd.read_excel('FoodIndulgentDB.xlsx',
 
 indulge['Date'] = pd.to_datetime(indulge['Date'])
 
-indulge['Date'] = pytz.utc.localize(indulge['Date']).astimezone(cst)
+indulge['Date'] = indulge['Date'].dt.tz_localize('America/Chicago')
 
 # Get max date to assure to not duplicate today
 max_date = indulge['Date'].max()
