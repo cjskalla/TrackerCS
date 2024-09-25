@@ -43,7 +43,7 @@ st.divider()
 
 
 # Get today's date and format it as YYYY-MM-DD
-today = datetime.today().date()
+today = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
 
 #Bring in the Indulge Data
 indulge = pd.read_excel('C:/Users/Calvin/Documents/TrackerCS/Trackers/FoodIndulgentDB.xlsx',
@@ -70,9 +70,20 @@ if max_date != today:
 
     max_date = indulge_df['Date'].max()
 
+else:
+    
+    indulge_df = indulge
 
-with st.form("data_editor_form"):
-    edited_indulge_df = st.data_editor(indulge_df,
+
+indulge_df['Date'] = pd.to_datetime(indulge_df['Date']).dt.date
+
+
+
+
+col = st.columns([1,1,1])
+
+with col[1]:
+    edited_indulge_df = st.data_editor(indulge_df.iloc[:,0:3],
                                     disabled=['Date'],
                                     hide_index=True,
                                     num_rows='dynamic',
@@ -89,10 +100,10 @@ with st.form("data_editor_form"):
                 """, unsafe_allow_html=True
             )
 
-    confirm = st.form_submit_button("Confirm")
+    confirm = st.button("Confirm")
 
 if confirm:
-    indulge_df.to_excel('C:/Users/Calvin/Documents/TrackerCS/Trackers/FoodIndulgentDB.xlsx',
+    edited_indulge_df.to_excel('C:/Users/Calvin/Documents/TrackerCS/Trackers/FoodIndulgentDB.xlsx',
                         sheet_name='FoodIndulgent',
                         index=False)
     
